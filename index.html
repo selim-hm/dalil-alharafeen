@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل الحرفيين + طنطا 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔧</text></svg>">
+</head>
+<body>
+    <div class="page-bg" id="pageBg" aria-hidden="true">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <header class="site-header">
+        <div class="logo">
+            <a href="index.html">
+                <span class="logo-mark" aria-hidden="true"><i class="fas fa-tools"></i><i class="fas fa-wrench" style="font-size:0.65em;margin-inline-start:-4px;"></i></span>
+                <span data-i18n="app_name">دليل الحرفيين</span>
+            </a>
+        </div>
+        <nav class="site-nav">
+            <div class="site-nav-links">
+                <a href="index.html" data-i18n="nav_home">الرئيسية</a>
+                <a href="all-specialties.html" data-i18n="nav_specialties">التخصصات</a>
+                <a href="terms.html" data-i18n="nav_terms">الشروط والأحكام</a>
+            </div>
+            <div class="header-contact-info">
+                <a href="mailto:abodahka755@gmail.com" class="contact-link" title="Email"><i class="fas fa-envelope"></i></a>
+                <a href="tel:+201272076840" class="contact-link" title="Phone"><i class="fas fa-phone"></i></a>
+            </div>
+            <div class="nav-actions">
+                <div class="dropdown lang-dropdown">
+                    <button type="button" class="lang-toggle" id="langToggleBtn" aria-expanded="false"><i class="fas fa-globe"></i> <span data-i18n="language">اللغة</span></button>
+                    <div class="dropdown-panel">
+                        <a href="#" data-lang="ar">العربية</a>
+                        <a href="#" data-lang="en">English</a>
+                        <a href="#" data-lang="fr">Français</a>
+                    </div>
+                </div>
+                <button type="button" class="dark-toggle" id="darkToggle" aria-label="Theme"><i class="fas fa-moon"></i></button>
+                <div id="authSection"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <section class="hero">
+            <div class="hero-inner">
+                <div class="hero-content">
+                    <h1 data-i18n="hero_title">أكبر دليل للحرفيين الموثوقين في مصر</h1>
+                    <p data-i18n="hero_desc">سبّاك، كهربائي، نجار، تكييف، ومئات التخصصات—اطلب خدمة موثوقة بسرعة.</p>
+                    <div class="hero-stats">
+                        <div class="stat"><span class="stat-number">150+</span><span class="stat-label" data-i18n="specialties_count">تخصص</span></div>
+                        <div class="stat"><span class="stat-number">27</span><span class="stat-label" data-i18n="governorates_count">محافظة</span></div>
+                        <div class="stat"><span class="stat-number">10k+</span><span class="stat-label" data-i18n="customers_count">عميل</span></div>
+                    </div>
+                    <div class="hero-search">
+                        <div class="search-3d-wrap">
+                            <div class="search-3d-inner">
+                                <i class="fas fa-search search-icon" aria-hidden="true"></i>
+                                <input type="text" id="homeSearchInput" data-i18n-placeholder="search_placeholder" placeholder="ابحث عن تخصص..." autocomplete="off">
+                            </div>
+                        </div>
+                        <a href="request.html" class="btn btn-primary btn-request" data-i18n="hero_btn">اطلب خدمة</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="value-section">
+            <h2 class="section-head" data-i18n="why_platform_title">لماذا منصة دليل الحرفيين؟</h2>
+            <div class="value-grid" id="valueGrid"></div>
+        </section>
+
+        <section class="problems-solutions">
+            <div class="ps-card">
+                <i class="fas fa-exclamation-triangle" aria-hidden="true"></i>
+                <h3 data-i18n="customer_problems_title">مشاكل العملاء</h3>
+                <ul id="customerProblemsList"></ul>
+            </div>
+            <div class="ps-card">
+                <i class="fas fa-tools" aria-hidden="true"></i>
+                <h3 data-i18n="worker_problems_title">مشاكل الحرفيين</h3>
+                <ul id="workerProblemsList"></ul>
+            </div>
+            <div class="ps-card">
+                <i class="fas fa-check-circle" aria-hidden="true"></i>
+                <h3 data-i18n="platform_solutions_title">حلول المنصة</h3>
+                <ul id="platformSolutionsList"></ul>
+            </div>
+        </section>
+
+        <section class="top-craftsmen-section">
+            <h2 class="section-head" data-i18n="top_craftsmen_title">أفضل الحرفيين</h2>
+            <div class="top-craftsmen-grid" id="topCraftsmenGrid"></div>
+        </section>
+
+        <section class="specialties-section">
+            <h2 class="section-head" data-i18n="popular_specialties">أشهر التخصصات</h2>
+            <div class="specialties-grid" id="featuredGrid"></div>
+            <div class="text-center mt-4">
+                <button type="button" id="viewAllBtn" class="btn btn-secondary" data-i18n="view_all">عرض جميع التخصصات</button>
+            </div>
+        </section>
+
+        <section class="reviews-section">
+            <h2 class="section-head" data-i18n="customer_reviews">آراء العملاء</h2>
+            <div class="reviews-grid" id="reviewsGrid"></div>
+        </section>
+
+        <section class="app-banner-3d" aria-label="App">
+            <div class="app-banner-inner">
+                <div class="app-mock" aria-hidden="true">
+                    <i class="fas fa-mobile-alt"></i>
+                    <i class="fas fa-tools" style="font-size:0.9rem;"></i>
+                </div>
+                <div class="app-banner-text">
+                    <div class="app-banner-label"><span class="badge" data-i18n="app_coming_soon">Coming soon</span></div>
+                    <h3 data-i18n="app_banner_title">حمّل التطبيق</h3>
+                    <p data-i18n="app_banner_desc">اطلب من هاتفك بسهولة.</p>
+                    <div class="store-buttons">
+                        <a href="#" class="store-btn store-btn-ios" id="appStoreBtn" rel="noopener noreferrer"><i class="fab fa-apple"></i> <span data-i18n="app_get_ios">App Store</span></a>
+                        <a href="#" class="store-btn store-btn-android" id="googlePlayBtn" rel="noopener noreferrer"><i class="fab fa-google-play"></i> <span data-i18n="app_get_android">Google Play</span></a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="team-wrap">
+            <h2 class="section-head" data-i18n="team_title">فريق العمل</h2>
+            <div id="teamSection"></div>
+        </section>
+    </main>
+
+    <div class="floating-menu">
+        <button type="button" class="floating-btn" id="floatingMenuBtn" aria-expanded="false" aria-label="Support menu"><i class="fas fa-plus"></i></button>
+        <div class="floating-options" id="floatingOptions">
+            <a href="https://wa.me/201272076840" target="_blank" rel="noopener noreferrer" class="float-option whatsapp"><i class="fab fa-whatsapp"></i> <span>WhatsApp</span></a>
+            <button type="button" class="float-option chat" id="chatFloatBtn"><i class="fas fa-headset"></i> <span data-i18n="support">الدعم</span></button>
+            <button type="button" class="float-option help" id="helpFloatBtn"><i class="fas fa-question-circle"></i> <span data-i18n="help">مساعدة</span></button>
+        </div>
+    </div>
+
+    <div class="chat-window" id="chatWindow" role="dialog" aria-label="Support chat">
+        <div class="chat-header">
+            <span><i class="fas fa-headset"></i> <span data-i18n="support_chat_title">الدعم الفني</span></span>
+            <span id="closeChatBtn" class="close-window" role="button" tabindex="0">&times;</span>
+        </div>
+        <div class="chat-messages" id="chatMessages"></div>
+        <div class="chat-input-area" id="chatInputArea" style="display: none;">
+            <input type="text" id="chatInput" data-i18n-placeholder="help_issue_placeholder" placeholder="">
+            <button type="button" id="sendChatBtn" aria-label="Send"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <div class="help-window" id="helpWindow" role="dialog" aria-label="Help">
+        <div class="help-header">
+            <span><i class="fas fa-question-circle"></i> <span data-i18n="help_window_title">المساعدة</span></span>
+            <span id="closeHelpBtn" class="close-window" role="button" tabindex="0">&times;</span>
+        </div>
+        <div class="help-form" id="helpForm">
+            <div class="help-menu" id="helpMenu">
+                <button type="button" class="help-menu-btn" data-action="create" data-i18n="help_faq_account">كيف أنشئ حساباً؟</button>
+                <button type="button" class="help-menu-btn" data-action="request" data-i18n="help_faq_request">كيف أطلب خدمة؟</button>
+                <button type="button" class="help-menu-btn" data-action="other" data-i18n="help_other">مشكلة أخرى</button>
+                <button type="button" class="help-menu-btn" data-action="whatsapp" data-i18n="support">واتساب</button>
+            </div>
+            <div class="help-message-area" id="helpMessageArea" style="display: none;">
+                <textarea id="helpMessageInput" rows="4" data-i18n-placeholder="help_issue_placeholder"></textarea>
+                <button type="button" id="sendHelpMsgBtn" class="btn btn-primary" data-i18n="help_send">إرسال</button>
+                <button type="button" id="backToHelpMenuBtn" class="btn btn-outline" data-i18n="help_back">رجوع</button>
+            </div>
+            <div class="help-confirmation" id="helpConfirmation" style="display: none;">
+                <p><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-i18n="response_24h">سنرد خلال 24 ساعة.</span></p>
+                <button type="button" id="closeHelpConfirmBtn" class="btn btn-primary" data-i18n="help_ok">حسناً</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer-extended">
+        <div class="footer-legal-row">
+            <a href="terms.html" data-i18n="nav_terms"></a>
+        </div>
+        <div class="social-icons social-icons-footer">
+            <a href="https://wa.me/201272076840" target="_blank" rel="noopener noreferrer" class="social-link whatsapp" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.youtube.com/@technology840?si=-F7lMRBfchWRGMEw" target="_blank" rel="noopener noreferrer" class="social-link youtube" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.facebook.com/share/1JLDCWRJZP/" target="_blank" rel="noopener noreferrer" class="social-link facebook" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://github.com/elmshed7" target="_blank" rel="noopener noreferrer" class="social-link social-github" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/mohamed-ahmed-382080377" target="_blank" rel="noopener noreferrer" class="social-link social-linkedin" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://k.kwai.com/u/@elmshed7/4bzjCrBN" target="_blank" rel="noopener noreferrer" class="social-link social-kwai" aria-label="Kwai"><span class="kwai-label">Kwai</span></a>
+        </div>
+        <div class="allow-copy footer-contact-block">
+            <div><i class="fas fa-envelope"></i> <span data-i18n="inquiries">للاستفسارات:</span> <a href="mailto:abodahka755@gmail.com">abodahka755@gmail.com</a></div>
+            <div><i class="fas fa-phone"></i> <a href="tel:+201272076840">+20 127 207 6840</a></div>
+        </div>
+        <div class="footer-main-text"><span data-i18n="copyright">Handyman Directory Tanta 2026</span> – <span data-i18n="faculty">Faculty of Administrative Information Systems</span></div>
+        <div class="footer-year" data-i18n="year">Tanta 2026</div>
+        <div class="developer"><i class="fas fa-code"></i> <span data-i18n="developer">Developed by Mohamed Ahmed</span></div>
+    </footer>
+
+    <script src="JavaScript/data.js"></script>
+    <script src="JavaScript/i18n.js"></script>
+    <script src="JavaScript/theme.js"></script>
+    <script src="JavaScript/animations.js"></script>
+    <script src="JavaScript/ui.js"></script>
+    <script src="JavaScript/auth.js"></script>
+    <script src="JavaScript/specialties.js"></script>
+    <script src="JavaScript/main.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            App.init();
+            document.querySelector(".site-header").classList.toggle("is-solid", window.scrollY > 24);
+        });
+    </script>
+</body>
+</html>

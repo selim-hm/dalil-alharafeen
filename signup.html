@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>إنشاء حساب — Handyman Directory + Tanta 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="CSS/style.css">
+    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔧</text></svg>">
+</head>
+<body>
+    <div class="page-bg" id="pageBg" aria-hidden="true"><div class="blob blob-1"></div><div class="blob blob-2"></div></div>
+
+    <header class="site-header">
+        <div class="logo">
+            <a href="index.html">
+                <span class="logo-mark" aria-hidden="true"><i class="fas fa-tools"></i><i class="fas fa-wrench" style="font-size:0.65em;margin-inline-start:-4px;"></i></span>
+                <span data-i18n="app_name">دليل الحرفيين</span>
+            </a>
+        </div>
+        <nav class="site-nav">
+            <div class="site-nav-links">
+                <a href="index.html" data-i18n="nav_home">الرئيسية</a>
+                <a href="all-specialties.html" data-i18n="nav_specialties">التخصصات</a>
+                <a href="terms.html" data-i18n="nav_terms">الشروط والأحكام</a>
+            </div>
+            <div class="nav-actions">
+                <div class="dropdown lang-dropdown">
+                    <button type="button" class="lang-toggle" id="langToggleBtn"><i class="fas fa-globe"></i> <span data-i18n="language">اللغة</span></button>
+                    <div class="dropdown-panel">
+                        <a href="#" data-lang="ar">العربية</a>
+                        <a href="#" data-lang="en">English</a>
+                        <a href="#" data-lang="fr">Français</a>
+                    </div>
+                </div>
+                <button type="button" class="dark-toggle" id="darkToggle"><i class="fas fa-moon"></i></button>
+                <div id="authSection"></div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container">
+        <div class="form-card">
+            <div class="form-header-icon"><i class="fas fa-user-plus"></i></div>
+            <h2 class="form-title" data-i18n="signup_title">انضم إلينا</h2>
+            <p class="form-subtitle" data-i18n="signup_subtitle">عميل أو حرفي</p>
+
+            <div class="user-type-selector">
+                <button type="button" class="user-type-btn active" data-type="client">
+                    <i class="fas fa-user"></i> <span data-i18n="customer">عميل</span>
+                </button>
+                <button type="button" class="user-type-btn" data-type="worker">
+                    <i class="fas fa-briefcase"></i> <span data-i18n="worker">حرفي</span>
+                </button>
+            </div>
+
+            <form id="signupForm">
+                <input type="hidden" id="userType" value="client">
+
+                <div class="form-row">
+                    <div class="form-group half">
+                        <label><i class="fas fa-user"></i> <span data-i18n="first_name"></span> *</label>
+                        <input type="text" id="signupFname" required autocomplete="given-name" data-i18n-placeholder="first_name" placeholder="">
+                    </div>
+                    <div class="form-group half">
+                        <label><i class="fas fa-user"></i> <span data-i18n="last_name"></span> *</label>
+                        <input type="text" id="signupLname" required autocomplete="family-name" data-i18n-placeholder="last_name" placeholder="">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fas fa-envelope"></i> <span data-i18n="email"></span> *</label>
+                    <input type="email" id="signupEmail" required autocomplete="email" data-i18n-placeholder="email" placeholder="">
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fas fa-envelope-open"></i> <span data-i18n="confirm_email"></span> *</label>
+                    <input type="email" id="signupEmailConfirm" required autocomplete="email" data-i18n-placeholder="confirm_email" placeholder="">
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fas fa-phone"></i> <span data-i18n="phone"></span> *</label>
+                    <div class="phone-input-group">
+                        <span class="phone-prefix">+20</span>
+                        <input type="tel" id="signupPhone" placeholder="10XXXXXXXX" required autocomplete="tel">
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group half">
+                        <label><i class="fas fa-calendar"></i> <span data-i18n="birth_date"></span> *</label>
+                        <input type="date" id="signupBirthDate" required>
+                    </div>
+                    <div class="form-group half">
+                        <label><i class="fas fa-venus-mars"></i> <span data-i18n="gender"></span> *</label>
+                        <div class="radio-group">
+                            <label><input type="radio" name="gender" value="male" checked> <span data-i18n="male"></span></label>
+                            <label><input type="radio" name="gender" value="female"> <span data-i18n="female"></span></label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group" id="workerSpecialtyGroup" style="display: none;">
+                    <label><i class="fas fa-tools"></i> <span data-i18n="your_specialty"></span> *</label>
+                    <select id="signupSpecialty"></select>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fas fa-city"></i> <span data-i18n="governorate"></span> *</label>
+                    <select id="signupGovernorate" required></select>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fas fa-map-marker-alt"></i> <span data-i18n="district"></span> *</label>
+                    <select id="signupDistrict" disabled required></select>
+                </div>
+
+                <div class="form-group">
+                    <label><i class="fas fa-map-marker-alt"></i> <span data-i18n="address"></span></label>
+                    <input type="text" id="signupAddress" autocomplete="street-address">
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group half">
+                        <label><i class="fas fa-lock"></i> <span data-i18n="password"></span> *</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="signupPassword" required autocomplete="new-password">
+                            <i class="fas fa-eye password-toggle" id="toggleSignupPassword"></i>
+                        </div>
+                    </div>
+                    <div class="form-group half">
+                        <label><i class="fas fa-check-circle"></i> <span data-i18n="confirm_password"></span> *</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="signupConfirmPassword" required autocomplete="new-password">
+                            <i class="fas fa-eye password-toggle" id="toggleConfirmPassword"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="passwordMatchMsg" class="password-match-msg"></div>
+
+                <div class="terms-checkbox">
+                    <input type="checkbox" id="acceptTerms" required>
+                    <label for="acceptTerms"><span data-i18n="agree_terms"></span> <a href="terms.html" id="termsLink" data-i18n="terms"></a></label>
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block"><i class="fas fa-user-plus"></i> <span data-i18n="create_account_btn"></span></button>
+            </form>
+
+            <div class="auth-footer">
+                <p><span data-i18n="have_account"></span> <a href="login.html" data-i18n="login"></a></p>
+            </div>
+
+            <div class="navigation-buttons">
+                <button type="button" onclick="history.back()" class="btn btn-outline"><i class="fas fa-arrow-left"></i> <span data-i18n="back_previous"></span></button>
+                <a href="index.html" class="btn btn-outline"><i class="fas fa-home"></i> <span data-i18n="back_home"></span></a>
+            </div>
+        </div>
+    </main>
+
+    <div class="floating-menu">
+        <div class="floating-options" id="floatingOptions">
+            <a href="https://wa.me/201272076840" target="_blank" rel="noopener noreferrer" class="float-option whatsapp"><i class="fab fa-whatsapp"></i> <span>WhatsApp</span></a>
+            <button type="button" class="float-option chat" id="chatFloatBtn"><i class="fas fa-headset"></i> <span data-i18n="support">الدعم</span></button>
+            <button type="button" class="float-option help" id="helpFloatBtn"><i class="fas fa-question-circle"></i> <span data-i18n="help">مساعدة</span></button>
+        </div>
+        <button type="button" class="floating-btn" id="floatingMenuBtn" aria-expanded="false" aria-label="Support menu"><i class="fas fa-plus"></i></button>
+    </div>
+
+    <div class="chat-window" id="chatWindow" role="dialog" aria-label="Support chat">
+        <div class="chat-header">
+            <span><i class="fas fa-headset"></i> <span data-i18n="support_chat_title">الدعم الفني</span></span>
+            <span id="closeChatBtn" class="close-window" role="button" tabindex="0">&times;</span>
+        </div>
+        <div class="chat-messages" id="chatMessages"></div>
+        <div class="chat-input-area" id="chatInputArea" style="display: none;">
+            <input type="text" id="chatInput" data-i18n-placeholder="help_issue_placeholder" placeholder="">
+            <button type="button" id="sendChatBtn" aria-label="Send"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <div class="help-window" id="helpWindow" role="dialog" aria-label="Help">
+        <div class="help-header">
+            <span><i class="fas fa-question-circle"></i> <span data-i18n="help_window_title">المساعدة</span></span>
+            <span id="closeHelpBtn" class="close-window" role="button" tabindex="0">&times;</span>
+        </div>
+        <div class="help-form" id="helpForm">
+            <div class="help-menu" id="helpMenu">
+                <button type="button" class="help-menu-btn" data-action="create" data-i18n="help_faq_account">كيف أنشئ حساباً؟</button>
+                <button type="button" class="help-menu-btn" data-action="request" data-i18n="help_faq_request">كيف أطلب خدمة؟</button>
+                <button type="button" class="help-menu-btn" data-action="other" data-i18n="help_other">مشكلة أخرى</button>
+                <button type="button" class="help-menu-btn" data-action="whatsapp" data-i18n="support">واتساب</button>
+            </div>
+            <div class="help-message-area" id="helpMessageArea" style="display: none;">
+                <textarea id="helpMessageInput" rows="4" data-i18n-placeholder="help_issue_placeholder"></textarea>
+                <button type="button" id="sendHelpMsgBtn" class="btn btn-primary" data-i18n="help_send">إرسال</button>
+                <button type="button" id="backToHelpMenuBtn" class="btn btn-outline" data-i18n="help_back">رجوع</button>
+            </div>
+            <div class="help-confirmation" id="helpConfirmation" style="display: none;">
+                <p><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-i18n="response_24h">سنرد خلال 24 ساعة.</span></p>
+                <button type="button" id="closeHelpConfirmBtn" class="btn btn-primary" data-i18n="help_ok">حسناً</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="floating-menu">
+        <div class="floating-options" id="floatingOptions">
+            <a href="https://wa.me/201272076840" target="_blank" rel="noopener noreferrer" class="float-option whatsapp"><i class="fab fa-whatsapp"></i> <span>WhatsApp</span></a>
+            <button type="button" class="float-option chat" id="chatFloatBtn"><i class="fas fa-headset"></i> <span data-i18n="support">الدعم</span></button>
+            <button type="button" class="float-option help" id="helpFloatBtn"><i class="fas fa-question-circle"></i> <span data-i18n="help">مساعدة</span></button>
+        </div>
+        <button type="button" class="floating-btn" id="floatingMenuBtn" aria-expanded="false" aria-label="Support menu"><i class="fas fa-plus"></i></button>
+    </div>
+
+    <div class="chat-window" id="chatWindow" role="dialog" aria-label="Support chat">
+        <div class="chat-header">
+            <span><i class="fas fa-headset"></i> <span data-i18n="support_chat_title">الدعم الفني</span></span>
+            <span id="closeChatBtn" class="close-window" role="button" tabindex="0">&times;</span>
+        </div>
+        <div class="chat-messages" id="chatMessages"></div>
+        <div class="chat-input-area" id="chatInputArea" style="display: none;">
+            <input type="text" id="chatInput" data-i18n-placeholder="help_issue_placeholder" placeholder="">
+            <button type="button" id="sendChatBtn" aria-label="Send"><i class="fas fa-paper-plane"></i></button>
+        </div>
+    </div>
+
+    <div class="help-window" id="helpWindow" role="dialog" aria-label="Help">
+        <div class="help-header">
+            <span><i class="fas fa-question-circle"></i> <span data-i18n="help_window_title">المساعدة</span></span>
+            <span id="closeHelpBtn" class="close-window" role="button" tabindex="0">&times;</span>
+        </div>
+        <div class="help-form" id="helpForm">
+            <div class="help-menu" id="helpMenu">
+                <button type="button" class="help-menu-btn" data-action="create" data-i18n="help_faq_account">كيف أنشئ حساباً؟</button>
+                <button type="button" class="help-menu-btn" data-action="request" data-i18n="help_faq_request">كيف أطلب خدمة؟</button>
+                <button type="button" class="help-menu-btn" data-action="other" data-i18n="help_other">مشكلة أخرى</button>
+                <button type="button" class="help-menu-btn" data-action="whatsapp" data-i18n="support">واتساب</button>
+            </div>
+            <div class="help-message-area" id="helpMessageArea" style="display: none;">
+                <textarea id="helpMessageInput" rows="4" data-i18n-placeholder="help_issue_placeholder"></textarea>
+                <button type="button" id="sendHelpMsgBtn" class="btn btn-primary" data-i18n="help_send">إرسال</button>
+                <button type="button" id="backToHelpMenuBtn" class="btn btn-outline" data-i18n="help_back">رجوع</button>
+            </div>
+            <div class="help-confirmation" id="helpConfirmation" style="display: none;">
+                <p><i class="fas fa-check-circle" aria-hidden="true"></i> <span data-i18n="response_24h">سنرد خلال 24 ساعة.</span></p>
+                <button type="button" id="closeHelpConfirmBtn" class="btn btn-primary" data-i18n="help_ok">حسناً</button>
+            </div>
+        </div>
+    </div>
+
+    <footer class="site-footer-extended">
+        <div class="footer-legal-row">
+            <a href="terms.html" data-i18n="nav_terms"></a>
+        </div>
+        <div class="social-icons social-icons-footer">
+            <a href="https://wa.me/201272076840" target="_blank" rel="noopener noreferrer" class="social-link whatsapp" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.youtube.com/@technology840?si=-F7lMRBfchWRGMEw" target="_blank" rel="noopener noreferrer" class="social-link youtube" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.facebook.com/share/1JLDCWRJZP/" target="_blank" rel="noopener noreferrer" class="social-link facebook" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+            <a href="https://github.com/elmshed7" target="_blank" rel="noopener noreferrer" class="social-link social-github" aria-label="GitHub"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/mohamed-ahmed-382080377" target="_blank" rel="noopener noreferrer" class="social-link social-linkedin" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://k.kwai.com/u/@elmshed7/4bzjCrBN" target="_blank" rel="noopener noreferrer" class="social-link social-kwai" aria-label="Kwai"><span class="kwai-label">Kwai</span></a>
+        </div>
+        <div class="allow-copy footer-contact-block">
+            <div><i class="fas fa-envelope"></i> <strong>Email:</strong> <a href="mailto:abodahka755@gmail.com">abodahka755@gmail.com</a></div>
+            <div><i class="fas fa-phone"></i> <strong>Phone:</strong> <a href="tel:+201272076840">+20 127 207 6840</a></div>
+        </div>
+        <div style="padding: 1rem; font-weight: 600; color: var(--primary); font-size: 0.95rem;">Handyman Directory Tanta 2026 – Faculty of Administrative Information Systems, Tanta 2026</div>
+        <div class="developer" style="margin-top: 0.5rem;"><i class="fas fa-code"></i> Developed by Mohamed Ahmed</div>
+    </footer>
+
+    <script src="JavaScript/data.js"></script>
+    <script src="JavaScript/i18n.js"></script>
+    <script src="JavaScript/theme.js"></script>
+    <script src="JavaScript/animations.js"></script>
+    <script src="JavaScript/ui.js"></script>
+    <script src="JavaScript/auth.js"></script>
+    <script src="JavaScript/specialties.js"></script>
+    <script src="JavaScript/main.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            App.initSignup();
+            document.querySelector(".site-header").classList.add("is-solid");
+        });
+    </script>
+</body>
+</html>
